@@ -1,0 +1,480 @@
+:root {
+  color-scheme: light;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #f0fdf4;
+  color: #134e4a;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #166534;
+  color: #f0fdf4;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.brand-scroll {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  background: #ffffff22;
+}
+
+.brand-scroll h1,
+.brand-scroll p {
+  margin: 0;
+}
+
+.brand-scroll h1 {
+  font-size: 1.6rem;
+}
+
+.brand-scroll p {
+  color: #d1fae5;
+}
+
+.nav-list {
+  display: grid;
+  gap: 12px;
+}
+
+.nav-button {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  background: #ffffff12;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-button:hover,
+.nav-button.active {
+  background: #ffffff22;
+  transform: translateX(2px);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+.page-content {
+  padding: 32px;
+}
+
+.page-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.page-tag {
+  margin: 0 0 8px;
+  color: #166534;
+  font-weight: 600;
+}
+
+.page-topbar h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.hero-card {
+  background: #e0f2fe;
+  border: 1px solid #a7f3d0;
+  border-radius: 24px;
+  padding: 24px;
+  max-width: 320px;
+  color: #064e3b;
+}
+
+.home-grid,
+.weather-grid,
+.crop-grid,
+.fertilizer-grid,
+.about-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.home-grid {
+  grid-template-columns: 1.7fr 1fr;
+}
+
+.panel-card,
+.summary-card,
+.about-card,
+.feature-card,
+.weather-card,
+.crop-card,
+.fertilizer-card,
+.disease-card,
+.info-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #d9f99d;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.info-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.tip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.tip-list li {
+  background: #ecfdf5;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.tip-list strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #166534;
+}
+
+.section-header {
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.section-subtitle {
+  margin: 0 0 8px;
+  color: #4f4f4f;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.feature-icon {
+  display: inline-flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  background: #dcfce7;
+  border-radius: 18px;
+  font-size: 1.6rem;
+}
+
+.feature-card h3,
+.crop-card h3,
+.fertilizer-card h3,
+.disease-card h3 {
+  margin: 0;
+  color: #134e4a;
+}
+
+.feature-card p,
+.crop-card p,
+.fertilizer-card p,
+.disease-card p,
+.info-card p,
+.about-card p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.weather-page .weather-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.weather-card {
+  display: grid;
+  gap: 18px;
+}
+
+.weather-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.weather-icon {
+  font-size: 2.4rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  background: #f0fdf4;
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid #d1fae5;
+}
+
+.metric-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.metric-top span {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.metric-card strong {
+  font-size: 1.4rem;
+  color: #134e4a;
+}
+
+.metric-unit {
+  display: block;
+  margin-top: 12px;
+  color: #4b5563;
+}
+
+.crop-page .crop-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.crop-card {
+  display: grid;
+  gap: 18px;
+}
+
+.crop-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.crop-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #dcfce7;
+  font-size: 1.8rem;
+}
+
+.crop-details {
+  display: grid;
+  gap: 16px;
+}
+
+.crop-details strong {
+  color: #166534;
+}
+
+.crop-details ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.fertilizer-page .selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pill {
+  border: 1px solid #a7f3d0;
+  background: #ecfdf5;
+  color: #166534;
+  padding: 11px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pill.selected {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+.fertilizer-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.fertilizer-card {
+  display: grid;
+  gap: 12px;
+}
+
+.fertilizer-why {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.disease-page .disease-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(320px, 1fr);
+  gap: 24px;
+}
+
+.upload-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 140px;
+  border: 2px dashed #16a34a;
+  border-radius: 22px;
+  color: #166534;
+  cursor: pointer;
+  margin: 16px 0;
+  padding: 12px;
+}
+
+.upload-box input {
+  display: none;
+}
+
+.image-preview {
+  width: 100%;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  object-fit: cover;
+  max-height: 280px;
+}
+
+.primary-button {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  background: #166534;
+  color: #ffffff;
+  padding: 14px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.result-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.disease-card {
+  display: grid;
+  gap: 14px;
+}
+
+.disease-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.disease-summary span {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.small-text {
+  color: #475569;
+  line-height: 1.7;
+}
+
+.about-page .about-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.about-card {
+  display: grid;
+  gap: 12px;
+}
+
+@media (max-width: 1120px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    padding: 24px;
+  }
+  .home-grid,
+  .disease-page .disease-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-content {
+    padding: 24px 16px;
+  }
+  .page-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-card {
+    max-width: 100%;
+  }
+}
