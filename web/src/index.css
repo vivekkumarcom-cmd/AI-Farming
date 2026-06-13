@@ -123,12 +123,12 @@ button {
 }
 
 .hero-card {
-  background: #e0f2fe;
-  border: 1px solid #a7f3d0;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 24px;
   padding: 24px;
   max-width: 320px;
-  color: #064e3b;
+  color: #166534;
 }
 
 .home-grid,
@@ -155,8 +155,8 @@ button {
 .info-card {
   background: #ffffff;
   border-radius: 24px;
-  border: 1px solid #d9f99d;
-  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0; /* Neutral soft border */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Softer shadow */
   padding: 24px;
 }
 
@@ -270,10 +270,10 @@ button {
 }
 
 .metric-card {
-  background: #f0fdf4;
+  background: #f8fafc; /* Subtle grey background for metrics */
   border-radius: 18px;
   padding: 16px;
-  border: 1px solid #d1fae5;
+  border: 1px solid #f1f5f9;
 }
 
 .metric-top {
@@ -392,6 +392,11 @@ button {
   cursor: pointer;
   margin: 16px 0;
   padding: 12px;
+}
+
+.upload-box.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
 }
 
 .upload-box input {

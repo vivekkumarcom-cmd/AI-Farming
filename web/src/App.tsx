@@ -45,6 +45,7 @@ const text = {
       modelHint: 'API-based detection with safe local mock fallback is enabled.',
       apiError: 'API unavailable. Showing fallback demo result.',
       confidence: 'confidence',
+      noImageError: 'Please upload an image first.',
       treatment: 'Treatment',
       aiStructure: 'AI Architecture',
       aiStructureDesc: 'Prediction uses API / free-tier model with local fallback for demo reliability.',
@@ -108,6 +109,7 @@ const text = {
       modelHint: 'API आधारित पहचान उपलब्ध है, और असफल होने पर लोकल डेमो परिणाम दिखेगा।',
       apiError: 'API उपलब्ध नहीं है। डेमो परिणाम दिखाया गया है।',
       confidence: 'विश्वास',
+      noImageError: 'कृपया पहले एक चित्र अपलोड करें।',
       treatment: 'उपचार',
       aiStructure: 'AI संरचना',
       aiStructureDesc: 'डेमो विश्वसनीयता हेतु API / free-tier मॉडल और स्थानीय fallback का उपयोग होता है।',
@@ -177,6 +179,7 @@ export default function App() {
     if (!file) return;
     setSelectedFile(file);
     setImageUrl(URL.createObjectURL(file));
+    setDetectError('');
   };
 
   const hashBytes = (bytes: Uint8Array) => {
@@ -191,10 +194,11 @@ export default function App() {
   const handleDetect = async () => {
     setDetectError('');
     setDetecting(true);
+    setResult(null); // Clear previous results when starting a new detection
     if (!selectedFile) {
-      // fallback random if no file
-      const next = diseaseSamples[Math.floor(Math.random() * diseaseSamples.length)];
-      setResult(next);
+      // Display an error if no file is selected
+      setDetectError(t.disease.noImageError);
+      setResult(null); // Ensure no previous result is shown
       setDetecting(false);
       return;
     }
@@ -519,7 +523,7 @@ export default function App() {
             <div className="disease-layout">
               <div className="disease-panel">
                 <p className="small-text">{t.disease.uploadHint}</p>
-                <label className="upload-box">
+                <label className={`upload-box ${detectError && !selectedFile ? 'error' : ''}`}>
                   <input type="file" accept="image/*" onChange={handleImageUpload} />
                   <span>{t.disease.chooseImage}</span>
                 </label>
