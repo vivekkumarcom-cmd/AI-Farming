@@ -28,10 +28,6 @@ const text = {
     remember: 'Remember',
     rememberText: 'Local weather insights and sustainable farming improve farmer decisions.',
     nav: {
-      landing: {
-        label: "Home",
-        subtitle: "Welcome page",
-      },
       home: { label: 'Dashboard', subtitle: 'Simple overview page' },
       weather: { label: 'Weather', subtitle: 'Farm weather forecast' },
       crops: { label: 'Crop Tracking', subtitle: 'Crop-wise information' },
@@ -96,10 +92,6 @@ const text = {
     remember: 'ध्यान रखें',
     rememberText: 'स्थानीय मौसम और जैविक खेती से किसान निर्णय बेहतर होते हैं।',
     nav: {
-      landing: {
-        label: "होम",
-        subtitle: "स्वागत पेज",
-      },
       home: { label: 'डैशबोर्ड', subtitle: 'सरल मुख्य पृष्ठ' },
       weather: { label: 'मौसम', subtitle: 'कृषि मौसम पूर्वानुमान' },
       crops: { label: 'फसल ट्रैकिंग', subtitle: 'प्रत्येक फसल की जानकारी' },
