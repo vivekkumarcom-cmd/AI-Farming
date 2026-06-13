@@ -4,12 +4,7 @@ node_modules/
 
 # Build outputs
 web/dist/
-mobile/build/
 
 # IDEs and Editors
 .vscode/
 .idea/
-
-# Flutter/Dart
-.dart_tool/
-web/node_modules/

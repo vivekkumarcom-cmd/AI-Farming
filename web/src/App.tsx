@@ -296,6 +296,31 @@ export default function App() {
       ][i] ?? f.summary,
     }));
 
+  // Translate crop profiles for the Crop Tracking page
+  const cropProfilesText = language === 'hi'
+    ? cropProfiles
+    : cropProfiles.map((c) => ({
+      ...c,
+      // Swap Hindi values for English counterparts for the tracking cards
+      name: c.name, 
+      stage: c.name === 'Wheat' ? 'Vegetative' : c.name === 'Rice' ? 'Flowering' : 'Growth',
+      waterNeed: c.name === 'Wheat' ? 'Medium' : 'High',
+    }));
+
+  // Ensure the current disease detection result translates when language changes
+  const translatedResult = language === 'hi'
+    ? result
+    : (diseaseSamples.find(s => s.disease === result.disease) || result);
+
+  // Translate fertilizer suggestions based on language
+  const translatedSuggestions = language === 'hi'
+    ? advice.suggestions
+    : advice.suggestions.map((s: any) => ({
+        ...s,
+        name: s.name.includes('यूरिया') ? 'Urea' : s.name.includes('डीएपी') ? 'DAP' : 'Potash',
+        time: s.time.includes('बुवाई') ? 'At Sowing' : 'Top Dressing',
+      }));
+
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -407,7 +432,7 @@ export default function App() {
           <section className="crop-page">
             <SectionHeader title={t.sections.cropTitle} subtitle={t.sections.cropSubtitle} />
             <div className="crop-grid">
-              {cropProfiles.map((crop) => (
+              {cropProfilesText.map((crop) => (
                 <CropCard
                   key={crop.name}
                   crop={crop}
@@ -439,7 +464,7 @@ export default function App() {
               ))}
             </div>
             <div className="fertilizer-grid">
-              {advice.suggestions.map((suggestion) => (
+              {translatedSuggestions.map((suggestion: any) => (
                 <FertilizerCard key={suggestion.name} item={suggestion} />
               ))}
             </div>
@@ -464,7 +489,7 @@ export default function App() {
                 {detectError && <p className="small-text">{detectError}</p>}
               </div>
               <div className="result-panel">
-                <DiseaseCard result={result} confidenceLabel={t.disease.confidence} treatmentLabel={t.disease.treatment} />
+                <DiseaseCard result={translatedResult} confidenceLabel={t.disease.confidence} treatmentLabel={t.disease.treatment} />
                 <div className="info-grid">
                   <InfoCard heading={t.disease.aiStructure} description={t.disease.aiStructureDesc} />
                   <InfoCard heading={language === 'hi' ? 'विश्वास स्तर' : 'Confidence'} description={t.disease.confidenceDesc} />
