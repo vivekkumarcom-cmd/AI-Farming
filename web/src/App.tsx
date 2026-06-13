@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
 import FeatureCard from './components/FeatureCard';
 import SectionHeader from './components/SectionHeader';
 import MetricCard from './components/MetricCard';
@@ -28,6 +28,10 @@ const text = {
     remember: 'Remember',
     rememberText: 'Local weather insights and sustainable farming improve farmer decisions.',
     nav: {
+      landing: {
+        label: "Home",
+        subtitle: "Welcome page",
+      },
       home: { label: 'Dashboard', subtitle: 'Simple overview page' },
       weather: { label: 'Weather', subtitle: 'Farm weather forecast' },
       crops: { label: 'Crop Tracking', subtitle: 'Crop-wise information' },
@@ -92,6 +96,10 @@ const text = {
     remember: 'ध्यान रखें',
     rememberText: 'स्थानीय मौसम और जैविक खेती से किसान निर्णय बेहतर होते हैं।',
     nav: {
+      landing: {
+        label: "होम",
+        subtitle: "स्वागत पेज",
+      },
       home: { label: 'डैशबोर्ड', subtitle: 'सरल मुख्य पृष्ठ' },
       weather: { label: 'मौसम', subtitle: 'कृषि मौसम पूर्वानुमान' },
       crops: { label: 'फसल ट्रैकिंग', subtitle: 'प्रत्येक फसल की जानकारी' },
@@ -169,6 +177,17 @@ export default function App() {
   const [result, setResult] = useState<typeof diseaseSamples[0] | null>(null);
   const [detecting, setDetecting] = useState(false);
   const [detectError, setDetectError] = useState<string>('');
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleStatusChange = () => setIsOnline(navigator.onLine);
+    window.addEventListener('online', handleStatusChange);
+    window.addEventListener('offline', handleStatusChange);
+    return () => {
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
+    };
+  }, []);
 
   const t = text[language];
 
@@ -397,6 +416,11 @@ export default function App() {
           <div>
             <p className="page-tag">{activeText.subtitle}</p>
             <h1>{activeText.label}</h1>
+            {!isOnline && (
+              <span style={{ fontSize: '0.8rem', background: '#f59e0b', color: '#fff', padding: '2px 8px', borderRadius: '10px', marginLeft: '10px', verticalAlign: 'middle' }}>
+                {language === 'hi' ? 'ऑफ़लाइन डेमो' : 'Offline Demo'}
+              </span>
+            )}
           </div>
           <div className="hero-card">
             <label style={{ display: 'block', marginBottom: 8 }}>
