@@ -1,7 +1,7 @@
 # Smart Farming Demo
 
-A modern web application built with React + Vite designed for farm awareness and management.
-The web app is responsive and compatible with mobile browsers for easy presentation on phones and tablets.
+A standalone React + Vite web application designed for farm awareness and management.
+Optimized for desktop and mobile browsers.
 
 ## Getting Started
 
